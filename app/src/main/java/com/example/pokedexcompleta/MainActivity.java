@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
 
                 try {
-                    System.out.println("QWRNAERBH>SBGbgBRH");
+                    System.out.println("QWRNAascascERBH>SBGbgBRH");
                     Document resCompleto = Jsoup.connect("https://www.pokemon.com/es/pokedex/").get();
                    nombres = (ArrayList<String>) resCompleto.select(" a[href^=/es/pokedex/]").eachText();
 
