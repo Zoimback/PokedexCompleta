@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     //Jsoup ---> JSON
     ArrayList<Pokemon> pokemons = new ArrayList<>();
     ListView listview;
-    ArrayList<String> nombres = new ArrayList<>();
+    ArrayList<String> nores = new ArrayList<>();
     static ArrayList<String> urlIMG = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +28,20 @@ public class MainActivity extends AppCompatActivity {
         //Customadapter adapter = new Customadapter(pokemons,this);
 
         //--------------------Pre-ejecucion--------------
+        System.out.println("HOLA");
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 try {
                     Document resCompleto = Jsoup.connect("https://www.pokemon.com/es/pokedex/").get();
-                   nombres = (ArrayList<String>) resCompleto.select(" a[href^=/es/pokedex/]").eachText();
-                   nombres.remove(0);
-                    for (int i = 0; i < nombres.size();i++){
+                   nores = (ArrayList<String>) resCompleto.select(" a[href^=/es/pokedex/]").eachText();
+
+                    for (int i = 0; i < nores.size();i++){
 
                         String numPkm = String.format("%03d",i+1);
                         urlIMG.add("https://assets.pokemon.com/assets/cms2/img/pokedex/full/"+numPkm+".png");//Conformar lista de urls
-                        pokemons.add(new Pokemon(nombres.get(i)));//Conformar la lista de nombres.
+                        pokemons.add(new Pokemon(nores.get(i)));//Conformar la lista de nombres.
 
 
 
