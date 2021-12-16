@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
 
                 try {
+                    System.out.println("QWRNAERBH>SBGbgBRH");
                     Document resCompleto = Jsoup.connect("https://www.pokemon.com/es/pokedex/").get();
                    nombres = (ArrayList<String>) resCompleto.select(" a[href^=/es/pokedex/]").eachText();
-                   nombres.remove(0);
+
                     for (int i = 0; i < nombres.size();i++){
 
                         String numPkm = String.format("%03d",i+1);
